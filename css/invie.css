@@ -4,12 +4,31 @@ body{
 	margin: 0;
 }
 
+.button{
+	font-size: 18px;
+	border-radius: 12px;
+	background: #fd324e;
+	color: white;
+	border: none;
+	padding: 7px 12px;
+	cursor: pointer;
+	background: linear-gradient(to left, #fe344e, #ff7250);
+}
+
+a{
+	text-decoration: none;
+}
+
 .titulo{
 	font-family: 'Montserrat', sans-serif;
 	font-size: 70px;
 	margin-bottom: 0;
 	margin-top: 70px;
 
+}
+
+.titulo span{
+	text-decoration: underline;
 }
 
 .title-a{
@@ -36,6 +55,7 @@ body{
 	border: 1px solid #1F313C;
 	margin: 10px;
 	padding: 10px;
+	border-radius: 8px;
 }
 
 .guitarra ol{
@@ -52,7 +72,7 @@ body{
 
 .portada{
 	background-image: url('../images/background.png');
-
+	background-size: 100%;
 	color: white;
 	padding: 20px;
 }
@@ -70,7 +90,7 @@ body{
 
 .menu a{
 	font-size: 24px;
-	text-decoration: none;
+	color: white;
 }
 
 .menu li{
@@ -78,8 +98,16 @@ body{
 	margin-left: 30px;
 }
 
+.menu li:before{
+	content: '°';
+	font-size: 25px;
+	line-height: 20px;
+	padding-bottom: 0;
+}
+
 .logo{
 	display: inline-block;
+	margin-left: 0;
 }
 
 .header{
@@ -95,7 +123,6 @@ body{
 	margin: auto;
 }
 
-
 .left{
 	float: left;
 	position: relative;
@@ -106,4 +133,86 @@ body{
 	float: right;
 	position: relative;
 	top: -127px;
+}
+
+.footer{
+	background: #273b47;
+}
+
+.footer .contenedor{
+	display: flex;
+	justify-content: space-between;
+}
+
+.contacto{
+	display: flex;
+	width: 300px;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.contacto img{
+	display: block;
+}
+
+.contacto strong{
+	display: block;
+}
+
+.contacto a{
+	color: white;
+	margin: 10px 10px 10px 0;
+}
+
+.formulario{
+	color: white;
+	display: flex;
+	width: 450px;
+	padding: 50px 10px;
+}
+
+.col1, .col2{
+	display: flex;
+	flex-direction: column;
+}
+
+.col1{
+	margin-right: 15px;
+}
+
+.col2{
+	align-items: flex-start;
+}
+
+.intereses label{
+	font-size: 13px;
+}
+
+.formulario label, .sexo, .intereses{
+	margin-bottom: 10px
+}
+
+.sexo{
+	margin-top: 10px;
+}
+
+table{
+	width: 100%;
+}
+
+th{
+	background: #273b47;
+	color: white;
+	border: #273b47;
+	padding: 10px 20px;
+	text-align: left;
+}
+
+td{
+	padding: 20px;
+}
+
+table,td,th{
+	border: 1px solid #273b47;
+	border-collapse: collapse;
 }
