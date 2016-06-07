@@ -6,18 +6,23 @@
 		<!-- <link rel="stylesheet" type="text/css" href="http://necolas.github.io/normalize.css/2.0.1/normalize.css"> -->
 		<link href='https://fonts.googleapis.com/css?family=Montserrat:700,400|Allerta' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="css/invie.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
 	</head>
 	<body>
-		<section id="portada" class="portada"><!-- portada -->
+		<section id="portada" class="portada background"><!-- portada -->
 			<header id="header" class="header"><!--header-->
 				<div class="contenedor pos-header">
 					<figure class="logo"><!--logo -->
-						<img src="images/invie.png" width="186" height="60" alt="Invie logotipo"/>
+						<img src="images/invie.png" srcset="images/invie.png 1x, images/invie2x.png 2x" width="186" height="60" alt="Invie logotipo"/>
 					</figure>
-					<nav class="menu"><!--para menues -->
+					<span class="burguer-button icon-menu" id="burguerButton"></span>
+					<nav class="menu" id="menu"><!--para menues -->
 						<ul>
 							<li>
 								<a href="index.html">Home</a>
+							</li>
+							<li>
+								<a href="#guitarras">Guitarras</a>
 							</li>
 							<li>
 								<a href="precios.html">Prices</a>
@@ -28,14 +33,14 @@
 			</header>
 			<div class="contenedor">
 				<h1 class="titulo"><!-- titulo -->
-					Guitarras <span>invi</span>esibles
+					Guitarras <span>invie</span>sibles
 				</h1>
 				<h3 class="title-a"><!--resumen -->
 					Sé la estrella de rock que siemrpe quisiste ser
 				</h3>
-				<button class="button"><!--boton-->
+				<a class="button" href="#guitarras"><!--boton-->
 					Conoce más
-				</button>
+				</a>
 			</div>
 		</section>
 		<section id="guitarras" class="guitarras contenedor"><!--guitarras -->
@@ -61,7 +66,7 @@
 					</ol>
 				</div>				
 			</article>
-			<article class="guitarra"><!--guitarra2-->
+			<article class="guitarra b"><!--guitarra2-->
 				<img class="left" src="images/invie-classic.png" alt="Guitarra Invie Clasica" width="350" />
 				<div class="contenedor-guitarra-b">
 					<h3 class="title-b">
@@ -119,11 +124,55 @@
 					</div>
 					<div class="col2">
 						<label for="comentarios">Comentarios</label>
-						<textarea name="comentarios" id="comentarios" cols="30" rows="7"></textarea>
-						<input tipe="submit" value="Enviar" class="button"/>
+						<textarea name="comentarios" class="comentarios" id="comentarios" cols="30" rows="7"></textarea>
+						<input type="submit" value="Enviar" class="button"/>
 					</div>										
 				</form>
 			</div>			
 		</footer>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.6.2/blazy.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+		<script type="text/javascript">
+			var consulta = window.matchMedia('(max-width: 500px)');//booleano que dice true o false segun la medida maxima del viewpot
+			consulta.addListener(mediaQuery);//para mantener a la escucha de un evento de rezizeing
+
+			var $burguerButton = document.getElementById('burguerButton');//una variable x de nombre burguerButton que se llama igual que un elemento en el html el cual se carga con el mismo
+			var $menu = document.getElementById('menu');//
+			$burguerButton.addEventListener('touchstart', toggleMenu); 
+			function toggleMenu(){//esta funcion hace un efecto de "rebote" segun tenga o no agregado el active
+				$menu.classList.toggle('active')	
+			};
+
+			function showMenu(){
+				$menu.classList.add('active')	
+			};
+
+			function hideMenu(){
+				$menu.classList.remove('active')	
+			};
+
+			function mediaQuery(){//esta funcion imprime por consola si se cumple la resolucion minima de pantalla y añade o quita la propiedad de toogle menu segun sea el caso
+				if (consulta.matches){
+					console.log('se cumplio la condicion');
+					$burguerButton.addEventListener('touchstart', toggleMenu);
+				}else{
+					$burguerButton.removeEventListener('touchstart', toggleMenu);
+					console.log('no se cumplio la condicion');
+				};
+			}
+			mediaQuery();
+			//lazy loading
+			var blazy = new Blazy({
+				selector: 'img'
+			});
+
+			//gestos hammer js touch
+			var $body = document.body;
+
+			var gestos = new Hammer($body);
+			gestos.on('swipeleft', hideMenu);
+
+			gestos.on('swiperight', showMenu);
+		</script>
 	</body>
 </html>
